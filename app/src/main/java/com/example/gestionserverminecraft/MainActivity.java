@@ -1,7 +1,10 @@
 package com.example.gestionserverminecraft;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +19,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button updateCrafteos;
     private Button deleteMods;
     private Button deleteCrafteos;
-    
+
+    Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +37,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         deleteCrafteos = findViewById(R.id.deletecrafteosbutton);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onClick(View v) {
-        if (v == btnActualitzar) {
-            long id;
-            bd = new DBInterface(this.getApplicationContext());
-            bd.obre();
-            id = Long.parseLong(editID.getText().toString());
-            boolean result = bd.actualitzarContacte(id,
-                    editNom.getText().toString(), editEmail.getText().toString());
-            if (result)
-                Toast.makeText(this, "Element modificat",
-                        Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "No s’ha pogut modificar l’element",
-                        Toast.LENGTH_SHORT).show();
-            bd.tanca();
-            finish();
+        switch (v.getId()){
+            case R.id.listadomodsbutton:
+                i = new Intent(this, Lista_Mods.class);
+                startActivity(i, null);
+                break;
+            case R.id.insertmodsbutton:
+                i = new Intent(this, Insert_Mods.class);
+                startActivity(i, null);
+                break;
+            case R.id.insertcrafteosbutton:
+                i = new Intent(this, Insert_Crafteos.class);
+                startActivity(i, null);
+                break;
+            case R.id.updatemodsbutton:
+                i = new Intent(this, Update_Mods.class);
+                startActivity(i, null);
+                break;
+            case R.id.updatecrafteobutton:
+                i = new Intent(this, Update_Crafteos.class);
+                startActivity(i, null);
+                break;
+            case R.id.deletemodsbutton:
+                i = new Intent(this, Delete_Mods.class);
+                startActivity(i, null);
+                break;
+            case R.id.deletecrafteosbutton:
+                i = new Intent(this, Delete_Crafteos.class);
+                startActivity(i, null);
+                break;
+
         }
+
     }
 }
