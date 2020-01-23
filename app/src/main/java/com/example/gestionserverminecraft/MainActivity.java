@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        /*if (v == btnActualitzar) {
+        if (v == btnActualitzar) {
             long id;
             bd = new DBInterface(this.getApplicationContext());
             bd.obre();
@@ -49,6 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
             bd.tanca();
             finish();
-        }*/
+        }
     }
 }
