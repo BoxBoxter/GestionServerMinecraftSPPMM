@@ -17,7 +17,7 @@
         android:layout_marginRight="55dp"
         android:layout_marginBottom="608dp"
         android:width="300dp"
-        android:text="Gestion Servidor Minecraft"
+        android:text="Gestión Servidor Minecraft"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
