@@ -6,4 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".Update_Crafteos">
 
+    <TextView
+        android:id="@+id/cabezeraUpdateCrafteo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="608dp"
+        android:width="300dp"
+        android:gravity="center"
+        android:text="Modificar Crafteo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textoIdInsertCrafteo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="211dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="501dp"
+        android:text="Id del Crafteo que quiere modificar:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/updateCrafteoId"
+        android:layout_width="202dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="229dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="457dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnComprobarIdUpdateCrafteo"
+        android:layout_width="73dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="459dp"
+        android:text="Comprobar"
+        android:textSize="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoNombreUpdateCrafteo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Nombre del Crafteo:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.474" />
+
+    <EditText
+        android:id="@+id/UpdateCrafteoNombre"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="330dp"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnVolverUpdateCrafteo"
+        android:layout_width="131dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="581dp"
+        android:layout_marginEnd="219dp"
+        android:layout_marginBottom="86dp"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnUpdateCrafteo"
+        android:layout_width="131dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="226dp"
+        android:layout_marginTop="581dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="86dp"
+        android:text="Añadir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
