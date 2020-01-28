@@ -29,8 +29,11 @@ public class BaseDades {
 
     public static final String Crafteo_NomTaula = "crafteos";
     public static final String BD_CREATE_CRAFTEO = "create table " + Crafteo_NomTaula + "( "
-            + Crafteo_ID + " integer primary key autoincrement, " + Crafteo_Mod_ID_FK + " integer,"
-            + " FOREIGN KEY (" + Crafteo_Mod_ID_FK + ") REFERENCES " + Mod_NomTaula + "(" + Mod_ID + ") " + Crafteo_Nom + " text not null);";
+            + Crafteo_ID + " integer primary key autoincrement, "
+            + Crafteo_Nom + " text not null, "
+            + Crafteo_Mod_ID_FK + " integer, "
+            + "FOREIGN KEY ("+ Crafteo_Mod_ID_FK +") REFERENCES " + Mod_NomTaula + "("+Mod_ID+") ON DELETE CASCADE);";
+
 
 
     public BaseDades(Context con) {
@@ -74,7 +77,7 @@ public class BaseDades {
     public boolean esborraCrafteo(long IDFila) {
         return bd.delete(Crafteo_NomTaula, Crafteo_ID + " = " + IDFila, null) > 0;
     }
-
+/*
     //RETORNA MOD
     public Cursor obtenirMod(long IDFila) throws SQLException {
         Cursor mCursor = bd.query(true, Mod_NomTaula, new String[] {Mod_ID,
@@ -84,8 +87,8 @@ public class BaseDades {
             mCursor.moveToFirst();
         }
         return mCursor;
-    }
-
+    }*/
+    /*
     //RETORNA CRAFTEO
     public Cursor obtenirCrafteo(long IDFila) throws SQLException {
         Cursor mCursor = bd.query(true, Crafteo_NomTaula, new String[] {Crafteo_ID,
@@ -95,7 +98,7 @@ public class BaseDades {
             mCursor.moveToFirst();
         }
         return mCursor;
-    }
+    }*/
 
     //RETORNA TOTS MODS
     public Cursor obtenirTotsMods() {
@@ -104,9 +107,9 @@ public class BaseDades {
     }
 
     //RETORNA TOTS CRAFTEOS
-    public Cursor obtenirTotsCrafteos() {
+    public Cursor obtenirTotsCrafteos(String IDFila) {
         return bd.query(Crafteo_NomTaula, new String[] {Crafteo_ID, Crafteo_Mod_ID_FK, Crafteo_Nom},
-                null,null, null, null, null);
+                Crafteo_Mod_ID_FK + " = " + IDFila,null, null, null, null);
     }
 
     //MODIFICA CONTACTE
@@ -117,7 +120,7 @@ public class BaseDades {
         return bd.update(Mod_NomTaula, args, Mod_ID + " = " + IDFila, null) > 0;
     }
     //MODIFICA CONTACTE
-    public boolean actualitzarCrafteo(long IDFila, String nom, String modFK) {
+    public boolean actualitzarCrafteo(long IDFila, String nom, long modFK) {
         ContentValues args = new ContentValues();
         args.put(Crafteo_Nom, nom);
         args.put(Crafteo_Mod_ID_FK, modFK);

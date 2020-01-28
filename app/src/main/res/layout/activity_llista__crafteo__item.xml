@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onClick"
     android:orientation="vertical">
 
     <LinearLayout
@@ -29,8 +28,8 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nom: "
+            android:layout_height="match_parent"
+            android:text="Mod id: "
             android:textStyle="bold" />
 
         <TextView
@@ -48,7 +47,7 @@
             android:id="@+id/llista_mods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Versio: "
+            android:text="Nom:"
             android:textStyle="bold" />
 
         <TextView

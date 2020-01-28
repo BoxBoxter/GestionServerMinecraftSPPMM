@@ -16,6 +16,13 @@ public class BaseDadesHelp extends SQLiteOpenHelper {
     BaseDadesHelp(Context con) {
         super(con, NomBD, null, VERSIO);
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase db){
+        super.onOpen(db);
+        db.execSQL("PRAGMA foreign_keys=ON");
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
