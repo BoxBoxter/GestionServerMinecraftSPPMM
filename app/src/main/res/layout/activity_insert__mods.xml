@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Insert_Mods"
-    android:background="@drawable/grass">
+    tools:context=".Insert_Mods">
 
     <TextView
         android:id="@+id/cabezeraInsertMod"
@@ -86,6 +85,7 @@
         android:layout_marginTop="581dp"
         android:layout_marginEnd="219dp"
         android:layout_marginBottom="86dp"
+        android:background="@drawable/stone"
         android:onClick="onClick"
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,6 +101,7 @@
         android:layout_marginTop="581dp"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="86dp"
+        android:background="@drawable/stone"
         android:onClick="onClick"
         android:text="Añadir"
         app:layout_constraintBottom_toBottomOf="parent"
