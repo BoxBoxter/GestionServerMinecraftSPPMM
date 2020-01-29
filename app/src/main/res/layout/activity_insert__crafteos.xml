@@ -15,9 +15,9 @@
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="608dp"
         android:width="300dp"
+        android:fontFamily="@font/letraminecraft"
         android:gravity="center"
         android:text="Introducir Crafteo"
-        android:fontFamily="@font/letraminecraft"
         android:textSize="29sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,47 +27,17 @@
 
     <TextView
         android:id="@+id/textoIdModInsertCrafteo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="211dp"
-        android:layout_marginEnd="104dp"
+        android:layout_width="292dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginEnd="56dp"
         android:layout_marginBottom="501dp"
         android:text="Id del MOD al que pertenece el Crafteo:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/insertCrafteoIdMod"
-        android:layout_width="202dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="229dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="457dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnComprobarIdModInsertCrafteo"
-        android:layout_width="73dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="459dp"
-        android:text="Comprobar"
-        android:textSize="7dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textoNombreInsertCrafteo"
@@ -122,6 +92,19 @@
         android:layout_marginBottom="86dp"
         android:onClick="onClick"
         android:text="Añadir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_mods"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="463dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

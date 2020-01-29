@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/minecraftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Llista_Crafteos_Item"></activity>
+        <activity android:name=".Detalles_Crafteo"></activity>
+        <activity android:name=".llista_nom_mod" />
+        <activity android:name=".Llista_Crafteos_Item" />
         <activity android:name=".Lista_Crafteos" />
         <activity android:name=".Llista_mods_item" />
         <activity android:name=".Delete_Crafteos" />
@@ -31,10 +33,10 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>
