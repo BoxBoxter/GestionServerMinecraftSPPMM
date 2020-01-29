@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Delete_Crafteos"/>
+        <activity android:name=".Llista_Crafteos_Item"></activity>
+        <activity android:name=".Lista_Crafteos" />
+        <activity android:name=".Llista_mods_item" />
+        <activity android:name=".Delete_Crafteos" />
         <activity android:name=".Delete_Mods" />
         <activity android:name=".Update_Crafteos" />
         <activity android:name=".Update_Mods" />
         <activity android:name=".Insert_Crafteos" />
         <activity android:name=".Insert_Mods" />
-        <activity android:name=".Llista_Mods_Item" />
         <activity android:name=".Lista_Mods" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -88,7 +88,7 @@ public class BaseDades {
         }
         return mCursor;
     }*/
-    /*
+
     //RETORNA CRAFTEO
     public Cursor obtenirCrafteo(long IDFila) throws SQLException {
         Cursor mCursor = bd.query(true, Crafteo_NomTaula, new String[] {Crafteo_ID,
@@ -98,7 +98,7 @@ public class BaseDades {
             mCursor.moveToFirst();
         }
         return mCursor;
-    }*/
+    }
 
     //RETORNA TOTS MODS
     public Cursor obtenirTotsMods() {
@@ -107,9 +107,11 @@ public class BaseDades {
     }
 
     //RETORNA TOTS CRAFTEOS
-    public Cursor obtenirTotsCrafteos(String IDFila) {
+    public Cursor obtenirTotsCrafteos() {
+
+        //String id = String.valueOf(id_mod_fk);
         return bd.query(Crafteo_NomTaula, new String[] {Crafteo_ID, Crafteo_Mod_ID_FK, Crafteo_Nom},
-                Crafteo_Mod_ID_FK + " = " + IDFila,null, null, null, null);
+                null,null, null, null, null);
     }
 
     //MODIFICA CONTACTE

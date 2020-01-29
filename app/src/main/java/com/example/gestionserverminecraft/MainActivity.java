@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // DECLARAMOS QUE BUTTON PERTENCE A QUAL
         listadoMods = findViewById(R.id.listadomodsbutton);
         listadoMods.setOnClickListener(this);
+
         insertMods = findViewById(R.id.insertmodsbutton);
         insertMods.setOnClickListener(this);
         insertCrafteos = findViewById(R.id.insertcrafteosbutton);
