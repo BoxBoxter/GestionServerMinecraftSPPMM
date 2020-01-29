@@ -57,7 +57,9 @@ public class Lista_Mods extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), Lista_Crafteos.class);
-
+                TextView textId = view.findViewById(R.id.id_mod);
+                long idMod = Long.parseLong(textId.getText().toString());
+                i.putExtra("id_mod", idMod);
                 startActivity(i, null);
             }
         });

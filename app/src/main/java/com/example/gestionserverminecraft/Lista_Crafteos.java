@@ -15,20 +15,24 @@ public class Lista_Crafteos extends AppCompatActivity {
 
     SimpleAdapter adapter;
     ListView listView;
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__crafteos);
         listView = findViewById(R.id.lista_crafteos);
+        i = getIntent();
         llistaCrafteos();
+
+
     }
     public void llistaCrafteos(){
         BaseDades bd;
-        
+        long id = i.getLongExtra("id_mod", 0);
         bd = new BaseDades(getApplicationContext());
         bd.obreBaseDades();
-        Cursor c = bd.obtenirTotsCrafteos();
+        Cursor c = bd.obtenirCrafteo(id);
         c.moveToFirst();
         ArrayList<HashMap<String, String>> llista = new ArrayList<HashMap<String, String>>();
         while (!c.isAfterLast()) {
