@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Insert_Mods">
+    tools:context=".Insert_Mods"
+    android:background="@drawable/grass">
 
     <TextView
         android:id="@+id/cabezeraInsertMod"
@@ -16,9 +17,9 @@
         android:layout_marginBottom="608dp"
         android:width="300dp"
         android:gravity="center"
-        android:text="Añadir MOD"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:text="Introducir MOD"
+        android:fontFamily="@font/letraminecraft"
+        android:textSize="29sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
