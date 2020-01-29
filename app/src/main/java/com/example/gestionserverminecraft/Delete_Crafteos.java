@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Delete_Crafteos extends AppCompatActivity implements View.OnClickListener{
+public class Delete_Crafteos extends AppCompatActivity implements View.OnClickListener {
 
     Button deletecrafteosbutton;
     BaseDades bd;
@@ -33,13 +33,14 @@ public class Delete_Crafteos extends AppCompatActivity implements View.OnClickLi
             if (result) {
                 Toast.makeText(this, "Element esborrat",
                         Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(this, "No s’ha pogut esborrar l’element",
                         Toast.LENGTH_SHORT).show();
             }
             bd.tanca();
+        } else {
             finish();
         }
+
     }
 }

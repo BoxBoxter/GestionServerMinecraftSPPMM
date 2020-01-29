@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lista_Crafteos extends AppCompatActivity {
+public class Detalles_Crafteo extends AppCompatActivity {
 
     SimpleAdapter adapter;
     ListView listView;
@@ -56,11 +56,10 @@ public class Lista_Crafteos extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), Detalles_Crafteo.class);
                 TextView textId = view.findViewById(R.id.id_crafteo);
-                long idCrafteo = Long.parseLong(textId.getText().toString());
-                i.putExtra("id_crafteo", idCrafteo);
+                long idMod = Long.parseLong(textId.getText().toString());
+                i.putExtra("id_mod", idMod);
                 startActivity(i, null);
             }
         });
     }
-
 }
