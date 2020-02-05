@@ -54,7 +54,7 @@ public class Lista_Crafteos extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), Detalles_Crafteo.class);
+                Intent i = new Intent(getApplicationContext(), Lista_Crafteos_Detalles.class);
                 TextView textId = view.findViewById(R.id.id_crafteo);
                 long idCrafteo = Long.parseLong(textId.getText().toString());
                 i.putExtra("id_crafteo", idCrafteo);

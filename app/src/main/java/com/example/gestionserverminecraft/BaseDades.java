@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.lang.reflect.Array;
+
 public class BaseDades {
 
     //ATTRIBUTOS DE MODS
@@ -33,6 +35,18 @@ public class BaseDades {
             + Crafteo_Nom + " text not null, "
             + Crafteo_Mod_ID_FK + " integer, "
             + "FOREIGN KEY ("+ Crafteo_Mod_ID_FK +") REFERENCES " + Mod_NomTaula + "("+Mod_ID+") ON DELETE CASCADE);";
+
+    //DETALLES DE CRAFTEOS
+    public static final String Crafteo_Detalles = "crafteo_detalles";
+    public static final String Crafteo_IDFK = "crafteo_idfk";
+    public static final String Crafteo_Imagen = "crafteo_imagen";
+
+    public static final String CrafteoDetall_NomTaula = "crafteosDetall";
+    public static final String BD_CREATE_CRAFTEO_DETALL = "create table " + CrafteoDetall_NomTaula + "( "
+            + Crafteo_IDFK + " integer primary key, "
+            + Crafteo_Detalles + " text not null, "
+            + Crafteo_Imagen + "  BLOB, "
+            + "FOREIGN KEY ("+ Crafteo_IDFK +") REFERENCES " + Crafteo_NomTaula + "("+Crafteo_ID+") ON DELETE CASCADE);";
 
 
 
@@ -68,6 +82,15 @@ public class BaseDades {
         return bd.insert(Crafteo_NomTaula ,null, initialValues);
     }
 
+    //INSEREIX CRAFTEO DETALL
+    public long insereixCrafteoDetall(long idFK, String detalles, byte[] imagen) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(Crafteo_IDFK, idFK);
+        initialValues.put(Crafteo_Detalles, detalles);
+        initialValues.put(Crafteo_Imagen, imagen);
+        return bd.insert(CrafteoDetall_NomTaula ,null, initialValues);
+    }
+
     //ESBORRA MOD
     public boolean esborraMod(long IDFila) {
         return bd.delete(Mod_NomTaula, Mod_ID + " = " + IDFila, null) > 0;
@@ -100,6 +123,26 @@ public class BaseDades {
         return mCursor;
     }
 
+    public Cursor obtenirCrafteoDetall(long IDFila) throws SQLException {
+        Cursor mCursor = bd.query(true, CrafteoDetall_NomTaula, new String[] {Crafteo_IDFK,
+                        Crafteo_Detalles,Crafteo_Imagen},Crafteo_IDFK + " = " + IDFila, null, null, null, null,
+                null);
+        if(mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor obtenirCrafteoNom(String nom) throws SQLException {
+        Cursor mCursor = bd.query(true, Crafteo_NomTaula, new String[] {Crafteo_ID,
+                        Crafteo_Mod_ID_FK,Crafteo_Nom},Crafteo_Nom + " = " + nom, null, null, null, null,
+                null);
+        if(mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     //RETORNA TOTS MODS
     public Cursor obtenirTotsMods() {
         return bd.query(Mod_NomTaula, new String[] {Mod_ID, Mod_Nom, Mod_Version},
@@ -115,7 +158,7 @@ public class BaseDades {
     }
 
     //MODIFICA CONTACTE
-    public boolean actualitzarMod(long IDFila, String nom, String version) {
+    public boolean actualitzarMod(String IDFila, String nom, String version) {
         ContentValues args = new ContentValues();
         args.put(Mod_Nom, nom);
         args.put(Mod_Version, version);

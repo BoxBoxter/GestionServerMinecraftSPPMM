@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/minecraftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Detalles_Crafteo"></activity>
+        <activity android:name=".Lista_Crafteo_Detalles_Item"></activity>
+        <activity android:name=".Lista_Crafteos_Detalles" />
         <activity android:name=".llista_nom_mod" />
         <activity android:name=".Llista_Crafteos_Item" />
         <activity android:name=".Lista_Crafteos" />

@@ -8,6 +8,7 @@ import android.util.Log;
 
 import static android.content.ContentValues.TAG;
 import static com.example.gestionserverminecraft.BaseDades.BD_CREATE_CRAFTEO;
+import static com.example.gestionserverminecraft.BaseDades.BD_CREATE_CRAFTEO_DETALL;
 import static com.example.gestionserverminecraft.BaseDades.BD_CREATE_MODS;
 import static com.example.gestionserverminecraft.BaseDades.NomBD;
 import static com.example.gestionserverminecraft.BaseDades.VERSIO;
@@ -28,6 +29,7 @@ public class BaseDadesHelp extends SQLiteOpenHelper {
         try {
             db.execSQL(BD_CREATE_MODS);
             db.execSQL(BD_CREATE_CRAFTEO);
+            db.execSQL(BD_CREATE_CRAFTEO_DETALL);
         } catch (SQLException e) {
             e.printStackTrace();
         }
