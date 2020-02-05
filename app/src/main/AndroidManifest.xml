@@ -9,8 +9,7 @@
         android:roundIcon="@drawable/minecraftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Lista_Crafteo_Detalles_Item"></activity>
-        <activity android:name=".Lista_Crafteos_Detalles" />
+        <activity android:name=".llista_nom_crafteo"></activity>
         <activity android:name=".llista_nom_mod" />
         <activity android:name=".Llista_Crafteos_Item" />
         <activity android:name=".Lista_Crafteos" />
@@ -22,7 +21,7 @@
         <activity android:name=".Insert_Crafteos" />
         <activity android:name=".Insert_Mods" />
         <activity android:name=".Lista_Mods" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name">

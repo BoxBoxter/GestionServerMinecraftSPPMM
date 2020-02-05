@@ -97,7 +97,6 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
             case R.id.spinner_mods:
-
                 t = view.findViewById(R.id.id_mod);
                 break;
         }
@@ -119,6 +118,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(this, "Afegit correctament",
                             Toast.LENGTH_SHORT).show();
                     editNom.setText(" ");
+                    descripcio.setText(" ");
                     t.setText(" ");
                 } else {
                     Toast.makeText(this, "Error a l’afegir",

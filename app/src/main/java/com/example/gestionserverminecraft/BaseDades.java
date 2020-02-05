@@ -113,7 +113,7 @@ public class BaseDades {
     }*/
 
     //RETORNA CRAFTEO
-    public Cursor obtenirCrafteo(long IDFila) throws SQLException {
+    public Cursor obtenirCrafteo(String IDFila) throws SQLException {
         Cursor mCursor = bd.query(true, Crafteo_NomTaula, new String[] {Crafteo_ID,
                         Crafteo_Mod_ID_FK,Crafteo_Nom},Crafteo_Mod_ID_FK + " = " + IDFila, null, null, null, null,
                 null);
