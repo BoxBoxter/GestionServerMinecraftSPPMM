@@ -17,8 +17,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Update_Crafteos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
+public class Update_Crafteos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    //HECHO
     private Button btnUpdateCrafteo;
     private BaseDades bd;
     private EditText editID;
@@ -27,11 +28,10 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
     private Spinner modificarModSpinner;
     private SimpleAdapter adapter;
     private TextView t;
-    String a = "1";
     //---------
     private Spinner modificarCrafteoSpinner;
     private SimpleAdapter adapter2;
-    private boolean okBoomer = true;
+    private TextView a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +53,16 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
             long id, id_fk;
             bd = new BaseDades(this.getApplicationContext());
             bd.obreBaseDades();
-            id = Long.parseLong(editID.getText().toString());
-            id_fk = Long.parseLong(String.valueOf(1));
-            boolean result = bd.actualitzarCrafteo(id,
-                    editNom.getText().toString(), id_fk);
-            if (result)
+            id = Long.parseLong(a.getText().toString());
+            id_fk = Long.parseLong(t.getText().toString());
+
+            boolean result = bd.actualitzarCrafteo(id, editNom.getText().toString(), id_fk);
+            if (result) {
                 Toast.makeText(this, "Element modificat",
                         Toast.LENGTH_SHORT).show();
-            else
+                editNom.setText("");
+                mostraSpinnerModsCrafteo();
+            } else
                 Toast.makeText(this, "No s’ha pogut modificar l’element",
                         Toast.LENGTH_SHORT).show();
             bd.tanca();
@@ -97,9 +99,8 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
         bd = new BaseDades(getApplicationContext());
         bd.obreBaseDades();
 
-        //String id = String.valueOf(t.getText());
 
-        Cursor c = bd.obtenirCrafteo(String.valueOf(t.getText()));
+        Cursor c = bd.obtenirCrafteo(t.getText().toString());
         c.moveToFirst();
         ArrayList<HashMap<String, String>> llista2 = new ArrayList<HashMap<String, String>>();
         while (!c.isAfterLast()) {
@@ -123,9 +124,12 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
         switch (parent.getId()) {
             case R.id.modificarModSpinner:
                 t = view.findViewById(R.id.id_modNom);
+                mostraSpinnerModsCrafteo();
+
                 break;
+            case R.id.modificarCrafteoSpinner:
+                a = view.findViewById(R.id.id_crafteolista);
         }
-        mostraSpinnerModsCrafteo();
     }
 
     @Override

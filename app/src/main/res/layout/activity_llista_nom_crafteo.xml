@@ -11,25 +11,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
             android:text="ID: "
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/id_crafteolista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="10dp" />
+            android:width="10dp"
+            android:fontFamily="@font/minecraft_font"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
             android:text=" - "
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/nom_crafteolista"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

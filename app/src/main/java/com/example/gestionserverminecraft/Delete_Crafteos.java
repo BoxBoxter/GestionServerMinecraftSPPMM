@@ -18,6 +18,8 @@ import java.util.HashMap;
 
 public class Delete_Crafteos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    //HECHO: TODO: MOSTRAR UN TEXT VIEW CON LA INFORMACION DEL CRAFTEO
+
     Button deletecrafteosbutton;
     BaseDades bd;
     private SimpleAdapter adapter;
