@@ -2,11 +2,21 @@ package com.example.gestionserverminecraft;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button deleteMods;
     private Button deleteCrafteos;
 
+    private Button cambiarFondo;
+
+    private ConstraintLayout cl;
+
+    private int a;
+
+    private ArrayList<Drawable> background = new ArrayList<Drawable>();
     Intent i;
 
     @Override
@@ -42,6 +59,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         deleteMods.setOnClickListener(this);
         deleteCrafteos = findViewById(R.id.deletecrafteosbutton);
         deleteCrafteos.setOnClickListener(this);
+
+        background.add(getDrawable(R.drawable.background1));
+        background.add(getDrawable(R.drawable.background2));
+        background.add(getDrawable(R.drawable.background3));
+        background.add(getDrawable(R.drawable.background4));
+        background.add(getDrawable(R.drawable.background5));
+
+        cambiarFondo = findViewById(R.id.btnCambiarFondo);
+        cambiarFondo.setOnClickListener(this);
+
+        cl = findViewById(R.id.activity_main);
+
+        cl.setBackground(background.get(carregar()));
+
+    }
+
+    private int carregar() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        int it = prefs.getInt("Background",0);
+        return it;
     }
 
 
@@ -68,6 +105,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == deleteCrafteos) {
             i = new Intent(this, Delete_Crafteos.class);
             startActivity(i, null);
+        } else if (v == cambiarFondo) {
+            a = (int) (Math.random() * 5);
+            cl.setBackground(background.get(a));
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        guardar();
+    }
+
+    private void guardar() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+/*
+        Gson gson = new Gson();
+        String json = gson.toJson(cl.getBackground());
+
+ */
+
+        prefsEditor.putInt("Background", a);
+        prefsEditor.commit();
     }
 }

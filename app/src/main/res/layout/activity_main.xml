@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/minebackground"
+    android:background="@drawable/background1"
     tools:context=".MainActivity">
 
     <TextView
@@ -160,5 +161,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCambiarFondo"
+        android:layout_width="150dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="207dp"
+        android:layout_marginTop="527dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="161dp"
+        android:fontFamily="@font/minecraft_font"
+        android:text="Cambiar fondo"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
