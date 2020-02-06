@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,9 +33,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static android.provider.MediaStore.Images.*;
+import static android.provider.MediaStore.Images.Media.*;
+
 public class Insert_Crafteos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private static final int APP_PERMISSION_READ_STORAGE = 1;
     BaseDades bd;
     private Spinner spinnerMod;
     private EditText editNom;
@@ -97,7 +100,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
             case R.id.spinner_mods:
-                t = view.findViewById(R.id.id_mod);
+                t = view.findViewById(R.id.id_modNom);
                 break;
         }
     }
@@ -124,8 +127,8 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(this, "Error a l’afegir",
                             Toast.LENGTH_SHORT).show();
                 }
-                bd.tanca();
             }
+            bd.tanca();
         }
         if (v == imagen) {
             recullDeGaleria();
@@ -136,17 +139,17 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
     }
 
     private void recullDeGaleria() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        Intent gallery = new Intent(Intent.ACTION_PICK, INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, GALLERY_REQUEST_CODE);
         //Create an Intent with action as ACTION_PICK
-        Intent intent = new Intent(Intent.ACTION_PICK);
+        //Intent intent = new Intent(Intent.ACTION_PICK);
         // Sets the type as image/*. This ensures only components of type image are selected
-        intent.setType("image/*");
+        gallery.setType("image/*");
         //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
         String[] mimeTypes = {"image/jpeg", "image/png"};
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+        gallery.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         // Launching the Intent
-        startActivityForResult(intent, GALLERY_REQUEST_CODE);
+        startActivityForResult(gallery, GALLERY_REQUEST_CODE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -155,7 +158,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == GALLERY_REQUEST_CODE) {//data.getData return the content URI for the selected Image
                 Uri selectedImage = data.getData();
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                String[] filePathColumn = {DATA};
                 // Get the cursor
                 Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 // Move to first row
