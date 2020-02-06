@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gestionserverminecraft">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:permissionGroup="android.permission-group.STORAGE"
+        android:protectionLevel="dangerous" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/minecraftlogo"
@@ -9,7 +14,8 @@
         android:roundIcon="@drawable/minecraftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".llista_nom_crafteo"></activity>
+        <activity android:name=".Lista_Crafteo_Detalles"></activity>
+        <activity android:name=".llista_nom_crafteo" />
         <activity android:name=".llista_nom_mod" />
         <activity android:name=".Llista_Crafteos_Item" />
         <activity android:name=".Lista_Crafteos" />
@@ -32,5 +38,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>

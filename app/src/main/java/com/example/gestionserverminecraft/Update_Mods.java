@@ -24,7 +24,6 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
     private SimpleAdapter adapter;
     private TextView t;
     private BaseDades bd;
-    private EditText editID;
     private EditText editNom;
     private EditText editVersio;
 
@@ -59,7 +58,7 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
         bd.tanca();
         spinnerModUpdate.setOnItemSelectedListener(this);
         //Implemento el adapter con el contexto, layout, listaFrutas
-        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista_nom_mod, new String[]{"id", "nom"}, new int[]{R.id.id_mod, R.id.nom_mod});
+        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista_nom_mod, new String[]{"id", "nom"}, new int[]{R.id.id_modNom, R.id.nom_mod});
         //Cargo el spinner con los datos
         spinnerModUpdate.setAdapter(adapter);
 
@@ -79,6 +78,7 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
                         Toast.LENGTH_SHORT).show();
                 editVersio.setText("");
                 editNom.setText("");
+                mostraSpinner();
             } else {
                 Toast.makeText(this, "No s’ha pogut modificar l’element",
                         Toast.LENGTH_SHORT).show();
@@ -95,7 +95,7 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
         switch (parent.getId()) {
             case R.id.spinner_actualizarmods:
 
-                t = view.findViewById(R.id.id_mod);
+                t = view.findViewById(R.id.id_modNom);
                 break;
         }
     }

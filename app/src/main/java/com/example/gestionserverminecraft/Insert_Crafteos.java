@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -90,7 +91,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
         bd.tanca();
         spinnerMod.setOnItemSelectedListener(this);
         //Implemento el adapter con el contexto, layout, listaFrutas
-        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista_nom_mod, new String[]{"id", "nom"}, new int[]{R.id.id_mod, R.id.nom_mod});
+        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista_nom_mod, new String[]{"id", "nom"}, new int[]{R.id.id_modNom, R.id.nom_mod});
         //Cargo el spinner con los datos
         spinnerMod.setAdapter(adapter);
 
@@ -128,28 +129,33 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
                             Toast.LENGTH_SHORT).show();
                 }
             }
-            bd.tanca();
+
         }
         if (v == imagen) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        GALLERY_REQUEST_CODE);
+            }
             recullDeGaleria();
         }
         if (v == enrrera) {
             finish();
         }
+        bd.tanca();
     }
 
     private void recullDeGaleria() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, GALLERY_REQUEST_CODE);
-        //Create an Intent with action as ACTION_PICK
-        //Intent intent = new Intent(Intent.ACTION_PICK);
-        // Sets the type as image/*. This ensures only components of type image are selected
-        gallery.setType("image/*");
-        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
-        String[] mimeTypes = {"image/jpeg", "image/png"};
-        gallery.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-        // Launching the Intent
-        startActivityForResult(gallery, GALLERY_REQUEST_CODE);
+
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            // Sets the type as image/*. This ensures only components of type image are selected
+            intent.setType("image/*");
+            //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+            String[] mimeTypes = {"image/jpeg", "image/png"};
+            //intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+            // Launching the Intent
+            startActivityForResult(intent, GALLERY_REQUEST_CODE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -158,7 +164,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == GALLERY_REQUEST_CODE) {//data.getData return the content URI for the selected Image
                 Uri selectedImage = data.getData();
-                String[] filePathColumn = {DATA};
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 // Get the cursor
                 Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 // Move to first row
@@ -172,10 +178,27 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
                 imatge_bitmap = BitmapFactory.decodeFile(imgDecodableString);
 
                 ByteArrayOutputStream blob = new ByteArrayOutputStream();
-                //imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /* Ignored for PNGs */, blob);
+                imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /* Ignored for PNGs */, blob);
                 bitmapmap = blob.toByteArray();
-                //mImatge.setImageBitmap(imatge_bitmap);
             }
+        }
+    }
+    private void askForPermission(String permission, Integer requestCode) {
+        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+
+                //This is called if user has denied the permission before
+                //In this case I am just asking the permission again
+                ActivityCompat.requestPermissions(this, new String[]{permission}, requestCode);
+
+            } else {
+
+                ActivityCompat.requestPermissions(this, new String[]{permission}, requestCode);
+            }
+        } else {
+            Toast.makeText(this, "" + permission + " is already granted.", Toast.LENGTH_SHORT).show();
         }
     }
 }

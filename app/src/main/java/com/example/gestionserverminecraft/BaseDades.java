@@ -123,14 +123,10 @@ public class BaseDades {
         return mCursor;
     }
 
-    public Cursor obtenirCrafteoDetall(long IDFila) throws SQLException {
-        Cursor mCursor = bd.query(true, CrafteoDetall_NomTaula, new String[] {Crafteo_IDFK,
+    public Cursor obtenirCrafteoDetall(String IDFila) throws SQLException {
+        return  bd.query(true, CrafteoDetall_NomTaula, new String[] {Crafteo_IDFK,
                         Crafteo_Detalles,Crafteo_Imagen},Crafteo_IDFK + " = " + IDFila, null, null, null, null,
                 null);
-        if(mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
     }
 
     public Cursor obtenirCrafteoNom(String nom) throws SQLException {

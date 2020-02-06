@@ -48,19 +48,19 @@ public class Lista_Crafteos extends AppCompatActivity {
         }
 
         bd.tanca();
-        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista__crafteos__item, new String[]{"id", "id_modFK", "nom_crafteo"}, new int[]{R.id.id_crafteolista, R.id.id_modFk, R.id.nom_crafteo});
+        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista__crafteos__item, new String[]{"id", "id_modFK", "nom_crafteo"}, new int[]{R.id.id_crafteo, R.id.id_modFk, R.id.nom_crafteo});
         listView.setAdapter(adapter);
 
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), Lista_Crafteos_Detalles.class);
-                TextView textId = view.findViewById(R.id.id_crafteolistaitem);
+                Intent i = new Intent(getApplicationContext(), Lista_Crafteo_Detalles.class);
+                TextView textId = view.findViewById(R.id.id_crafteo);
                 long idCrafteo = Long.parseLong(textId.getText().toString());
                 i.putExtra("id_crafteo", idCrafteo);
                 startActivity(i, null);
             }
-        });*/
+        });
     }
 
 }
