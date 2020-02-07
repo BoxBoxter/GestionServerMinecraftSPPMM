@@ -39,6 +39,7 @@ import static android.provider.MediaStore.Images.Media.*;
 
 public class Insert_Crafteos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    //HECHO
     BaseDades bd;
     private Spinner spinnerMod;
     private EditText editNom;

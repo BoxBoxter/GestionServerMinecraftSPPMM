@@ -2,6 +2,7 @@ package com.example.gestionserverminecraft;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class Insert_Mods extends AppCompatActivity implements View.OnClickListen
     private EditText editVersio;
     private Button afegir;
     private Button enrrera;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +29,14 @@ public class Insert_Mods extends AppCompatActivity implements View.OnClickListen
         enrrera = findViewById(R.id.btnVolverInsertMod);
 
         bd = new BaseDades(this);
-
+        mp = MediaPlayer.create(this, R.raw.introducirsonido);
     }
 
     @Override
     public void onClick(View v) {
         if (v == afegir)
         {
+            mp.start();
             bd = new BaseDades(this);
             bd.obreBaseDades();
             if (bd.insereixMod(editNom.getText().toString(),
