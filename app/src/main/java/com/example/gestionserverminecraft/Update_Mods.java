@@ -3,6 +3,7 @@ package com.example.gestionserverminecraft;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
     private BaseDades bd;
     private EditText editNom;
     private EditText editVersio;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
         editVersio = findViewById(R.id.updateModVersion);
         spinnerModUpdate = findViewById(R.id.spinner_actualizarmods);
         btnVolverUpdateMod = findViewById(R.id.btnVolverUpdateMod);
+        mp = MediaPlayer.create(this, R.raw.introducirsonido);
 
         mostraSpinner();
     }
@@ -67,21 +70,25 @@ public class Update_Mods extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == btnUpdateMod) {
-            //long id;
             bd = new BaseDades(this.getApplicationContext());
             bd.obreBaseDades();
-            //id = Long.parseLong(t.getText().toString());
-            boolean result = bd.actualitzarMod(t.getText().toString(),
-                    editNom.getText().toString(), editVersio.getText().toString());
-            if (result) {
-                Toast.makeText(this, "Element modificat",
+            if (editNom.getText().toString().isEmpty() || editVersio.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Error: Elements buits",
                         Toast.LENGTH_SHORT).show();
-                editVersio.setText("");
-                editNom.setText("");
-                mostraSpinner();
             } else {
-                Toast.makeText(this, "No s’ha pogut modificar l’element",
-                        Toast.LENGTH_SHORT).show();
+                mp.start();
+                boolean result = bd.actualitzarMod(t.getText().toString(),
+                        editNom.getText().toString(), editVersio.getText().toString());
+                if (result) {
+                    Toast.makeText(this, "Element modificat",
+                            Toast.LENGTH_SHORT).show();
+                    editVersio.setText("");
+                    editNom.setText("");
+                    mostraSpinner();
+                } else {
+                    Toast.makeText(this, "No s’ha pogut modificar l’element",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
             bd.tanca();
         }

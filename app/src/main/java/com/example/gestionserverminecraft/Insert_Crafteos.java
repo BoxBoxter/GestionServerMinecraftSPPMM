@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -57,6 +58,8 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
     //Descripcio
     private EditText descripcio;
 
+    private MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +73,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
         descripcio = findViewById(R.id.editDescripcio);
 
         bd = new BaseDades(this);
-
+        mp = MediaPlayer.create(this, R.raw.introducirsonido);
         mostraSpinner();
     }
 
@@ -114,22 +117,30 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v == afegir) {
+
             bd = new BaseDades(this);
             bd.obreBaseDades();
-            long id = bd.insereixCrafteo(editNom.getText().toString(), t.getText().toString());
-
-            if (id != -1) {
-                if (bd.insereixCrafteoDetall(id, descripcio.getText().toString(), bitmapmap) != -1) {
-                    Toast.makeText(this, "Afegit correctament",
-                            Toast.LENGTH_SHORT).show();
-                    editNom.setText(" ");
-                    descripcio.setText(" ");
-                    t.setText(" ");
-                } else {
-                    Toast.makeText(this, "Error a l’afegir",
-                            Toast.LENGTH_SHORT).show();
+            if (editNom.getText().toString().isEmpty() || descripcio.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Error: Elements buits",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                mp.start();
+                long id = bd.insereixCrafteo(editNom.getText().toString(), t.getText().toString());
+                if (id != -1) {
+                    if (bd.insereixCrafteoDetall(id, descripcio.getText().toString(), bitmapmap) != -1) {
+                        Toast.makeText(this, "Afegit correctament",
+                                Toast.LENGTH_SHORT).show();
+                        editNom.setText(" ");
+                        descripcio.setText(" ");
+                        t.setText(" ");
+                    } else {
+                        Toast.makeText(this, "Error a l’afegir",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
+            bd.tanca();
+
 
         }
         if (v == imagen) {
@@ -149,14 +160,14 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
 
     private void recullDeGaleria() {
 
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            // Sets the type as image/*. This ensures only components of type image are selected
-            intent.setType("image/*");
-            //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
-            String[] mimeTypes = {"image/jpeg", "image/png"};
-            //intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-            // Launching the Intent
-            startActivityForResult(intent, GALLERY_REQUEST_CODE);
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        // Sets the type as image/*. This ensures only components of type image are selected
+        intent.setType("image/*");
+        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+        String[] mimeTypes = {"image/jpeg", "image/png"};
+        //intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+        // Launching the Intent
+        startActivityForResult(intent, GALLERY_REQUEST_CODE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -184,6 +195,7 @@ public class Insert_Crafteos extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
+
     private void askForPermission(String permission, Integer requestCode) {
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
 

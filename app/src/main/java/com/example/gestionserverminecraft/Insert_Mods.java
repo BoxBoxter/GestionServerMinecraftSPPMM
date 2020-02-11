@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Insert_Mods extends AppCompatActivity implements View.OnClickListener{
+public class Insert_Mods extends AppCompatActivity implements View.OnClickListener {
 
     BaseDades bd;
     private EditText editNom;
@@ -34,24 +34,30 @@ public class Insert_Mods extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (v == afegir)
-        {
-            mp.start();
+        if (v == afegir) {
+
             bd = new BaseDades(this);
             bd.obreBaseDades();
-            if (bd.insereixMod(editNom.getText().toString(),
-                    editVersio.getText().toString()) != -1) {
-                Toast.makeText(this, "Afegit correctament",
+            if (editNom.getText().toString().isEmpty() || editVersio.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Error: Elements buits",
                         Toast.LENGTH_SHORT).show();
-                editNom.setText(" ");
-                editVersio.setText(" ");
             } else {
-                Toast.makeText(this, "Error a l’afegir",
-                        Toast.LENGTH_SHORT).show();
+                mp.start();
+                if (bd.insereixMod(editNom.getText().toString(),
+                        editVersio.getText().toString()) != -1) {
+                    Toast.makeText(this, "Afegit correctament",
+                            Toast.LENGTH_SHORT).show();
+                    editNom.setText(" ");
+                    editVersio.setText(" ");
+                } else {
+                    Toast.makeText(this, "Error a l’afegir",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
             bd.tanca();
-        } if (v == enrrera)
-        {
+
+        }
+        if (v == enrrera) {
             finish();
         }
     }

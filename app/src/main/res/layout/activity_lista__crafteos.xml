@@ -7,7 +7,7 @@
         android:id="@+id/lista_crafteos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="#000"
+        android:divider="@android:color/darker_gray"
         android:dividerHeight="2dp" />
 
 </RelativeLayout>

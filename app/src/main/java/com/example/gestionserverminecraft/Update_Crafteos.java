@@ -3,6 +3,7 @@ package com.example.gestionserverminecraft;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,8 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
     private SimpleAdapter adapter2;
     private TextView a;
 
+    private MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
         editNom = findViewById(R.id.updateCrafteoNombre);
         modificarModSpinner = findViewById(R.id.modificarModSpinner);
         modificarCrafteoSpinner = findViewById(R.id.modificarCrafteoSpinner);
+        mp = MediaPlayer.create(this, R.raw.introducirsonido);
 
         mostraSpinnerMods();
     }
@@ -50,21 +54,28 @@ public class Update_Crafteos extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v == btnUpdateCrafteo) {
+
             long id, id_fk;
             bd = new BaseDades(this.getApplicationContext());
             bd.obreBaseDades();
-            id = Long.parseLong(a.getText().toString());
-            id_fk = Long.parseLong(t.getText().toString());
+            if (editNom.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Error: Elements buits",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                mp.start();
+                id = Long.parseLong(a.getText().toString());
+                id_fk = Long.parseLong(t.getText().toString());
 
-            boolean result = bd.actualitzarCrafteo(id, editNom.getText().toString(), id_fk);
-            if (result) {
-                Toast.makeText(this, "Element modificat",
-                        Toast.LENGTH_SHORT).show();
-                editNom.setText("");
-                mostraSpinnerModsCrafteo();
-            } else
-                Toast.makeText(this, "No s’ha pogut modificar l’element",
-                        Toast.LENGTH_SHORT).show();
+                boolean result = bd.actualitzarCrafteo(id, editNom.getText().toString(), id_fk);
+                if (result) {
+                    Toast.makeText(this, "Element modificat",
+                            Toast.LENGTH_SHORT).show();
+                    editNom.setText("");
+                    mostraSpinnerModsCrafteo();
+                } else
+                    Toast.makeText(this, "No s’ha pogut modificar l’element",
+                            Toast.LENGTH_SHORT).show();
+            }
             bd.tanca();
         } else {
             finish();

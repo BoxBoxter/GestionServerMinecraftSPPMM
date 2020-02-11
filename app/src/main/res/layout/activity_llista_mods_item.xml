@@ -11,13 +11,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
             android:text="ID: "
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/id_mod"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -28,14 +32,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
             android:text="Nom: "
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/nom_mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nom_mod"
-            />
+            android:fontFamily="@font/minecraft_font"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,14 +53,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/minecraft_font"
             android:text="Versio: "
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/versio_mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/versio_mod"
-            />
+            android:fontFamily="@font/minecraft_font"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

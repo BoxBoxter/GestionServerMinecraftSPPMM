@@ -46,7 +46,7 @@ public class Lista_Crafteo_Detalles extends AppCompatActivity {
             descripcio.setText(c.getString(1));
             byte[] byteArray = c.getBlob(2);
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(bmp, 100, 100, false));
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(bmp, 500, 500, false));
 //
 //            Bitmap bmp = BitmapFactory.decodeByteArray(pelicula.getFoto(),0,pelicula.getFoto().length);
 //            mImatge.setImageBitmap(Bitmap.createScaledBitmap(bmp, 100, 100, false));

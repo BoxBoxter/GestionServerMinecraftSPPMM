@@ -114,13 +114,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void guardar() {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = prefs.edit();
-/*
-        Gson gson = new Gson();
-        String json = gson.toJson(cl.getBackground());
-
- */
-
         prefsEditor.putInt("Background", a);
         prefsEditor.commit();
     }
+    public void PlayBackgroundSound(View view) {
+        Intent intent = new Intent(MainActivity.this, BackgroundSoundService.class);
+        startService(intent);
+    }
+
 }

@@ -25,22 +25,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textoIdCrafteoDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="211dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginBottom="500dp"
-        android:fontFamily="@font/minecraft_font"
-        android:text="Id del Crafteo que quiere borrar:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btnVolverDeleteCrafteo"
         android:layout_width="131dp"
@@ -85,10 +69,53 @@
         android:id="@+id/borrarSpinnerCrafteo"
         android:layout_width="292dp"
         android:layout_height="35dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="466dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="357dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="339dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoIdCrafteoDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="338dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="373dp"
+        android:fontFamily="@font/minecraft_font"
+        android:text="Id del Crafteo que quiere borrar:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="198dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="514dp"
+        android:text="Id Mod del crafteo que quiere borrar:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/borrarSpinnerCrafteoMod"
+        android:layout_width="292dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="217dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="477dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

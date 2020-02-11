@@ -3,6 +3,7 @@ package com.example.gestionserverminecraft;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +25,10 @@ public class Delete_Crafteos extends AppCompatActivity implements View.OnClickLi
     BaseDades bd;
     private SimpleAdapter adapter;
     private Spinner borrarSpinnerCrafteo;
+    private Spinner borrarSpinnerCrafteoMod;
     private TextView t;
+    private TextView a;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +37,40 @@ public class Delete_Crafteos extends AppCompatActivity implements View.OnClickLi
 
         deletecrafteosbutton = findViewById(R.id.btnDeleteCrafteo);
         borrarSpinnerCrafteo = findViewById(R.id.borrarSpinnerCrafteo);
-
-        mostraSpinnerCrafteo();
+        borrarSpinnerCrafteoMod = findViewById(R.id.borrarSpinnerCrafteoMod);
+        mp = MediaPlayer.create(this, R.raw.introducirsonido);
+        mostraSpinnerMods();
     }
 
+    public void mostraSpinnerMods() {
+        BaseDades bd;
+        bd = new BaseDades(getApplicationContext());
+        bd.obreBaseDades();
+        Cursor c = bd.obtenirTotsMods();
+        c.moveToFirst();
+        ArrayList<HashMap<String, String>> llista = new ArrayList<HashMap<String, String>>();
+        while (!c.isAfterLast()) {
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("id", c.getString(0));
+            map.put("nom", c.getString(1));
+            //map.put("versio", c.getString(2));
+            llista.add(map);
+            c.moveToNext();
+        }
+        bd.tanca();
+        borrarSpinnerCrafteoMod.setOnItemSelectedListener(this);
+        //Implemento el adapter con el contexto, layout, listaFrutas
+        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_llista_nom_mod, new String[]{"id", "nom"}, new int[]{R.id.id_modNom, R.id.nom_mod});
+        //Cargo el spinner con los datos
+        borrarSpinnerCrafteoMod.setAdapter(adapter);
+    }
     @Override
     public void onClick(View v) {
         if (v == deletecrafteosbutton) {
+            mp.start();
             bd = new BaseDades(this.getApplicationContext());
             bd.obreBaseDades();
-            long id = Long.parseLong(t.getText().toString());
+            long id = Long.parseLong(a.getText().toString());
             boolean result = bd.esborraCrafteo(id);
             if (result) {
                 Toast.makeText(this, "Element esborrat",
@@ -64,7 +92,7 @@ public class Delete_Crafteos extends AppCompatActivity implements View.OnClickLi
 
         //String id = String.valueOf(t.getText());
 
-        Cursor c = bd.obtenirTotsCrafteos();
+        Cursor c = bd.obtenirCrafteo(t.getText().toString());
         c.moveToFirst();
         ArrayList<HashMap<String, String>> llista2 = new ArrayList<HashMap<String, String>>();
         while (!c.isAfterLast()) {
@@ -86,9 +114,12 @@ public class Delete_Crafteos extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
-            case R.id.borrarSpinnerCrafteo:
-                t = view.findViewById(R.id.id_crafteolista);
+            case R.id.borrarSpinnerCrafteoMod:
+                t = view.findViewById(R.id.id_modNom);
+                mostraSpinnerCrafteo();
                 break;
+            case R.id.borrarSpinnerCrafteo:
+                a = view.findViewById(R.id.id_crafteolista);
         }
     }
 
