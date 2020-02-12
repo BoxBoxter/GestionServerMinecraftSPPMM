@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button deleteCrafteos;
 
     private Button cambiarFondo;
-
     private ConstraintLayout cl;
-
-    private int a;
-
+    private int a = 0;
     private ArrayList<Drawable> background = new ArrayList<Drawable>();
+
+    private Button creditos;
+
     Intent i;
 
     @Override
@@ -64,9 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cambiarFondo.setOnClickListener(this);
 
         cl = findViewById(R.id.activity_main);
-
         cl.setBackground(background.get(carregar()));
 
+        creditos = findViewById(R.id.btnCreditos);
+        creditos.setOnClickListener(this);
     }
 
     private int carregar() {
@@ -102,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == cambiarFondo) {
             a = (int) (Math.random() * 5);
             cl.setBackground(background.get(a));
+        } else if (v == creditos) {
+            i = new Intent(this, Creditos.class);
+            startActivity(i, null);
         }
     }
 

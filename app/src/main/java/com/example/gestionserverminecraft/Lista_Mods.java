@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lista_Mods extends AppCompatActivity {
+public class Lista_Mods extends AppCompatActivity{
 
     SimpleAdapter adapter;
     ListView listView;

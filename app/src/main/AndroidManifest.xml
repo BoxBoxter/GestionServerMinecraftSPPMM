@@ -14,6 +14,8 @@
         android:roundIcon="@drawable/minecraftlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Creditos" />
+        <activity android:name=".DetallActivity" />
         <activity android:name=".Lista_Crafteo_Detalles"></activity>
         <activity android:name=".llista_nom_crafteo" />
         <activity android:name=".llista_nom_mod" />
