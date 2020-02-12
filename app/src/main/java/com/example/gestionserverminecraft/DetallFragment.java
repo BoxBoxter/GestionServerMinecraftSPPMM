@@ -39,13 +39,15 @@ public class DetallFragment extends Fragment {
         if (credits.equals("Fabio")){
 
             nombre.setText("Fabio Cardoso");
-            edad.setText("21 años");
+            titulo.setText("Funciones: ");
+            edad.setText("20 años");
             funciones.setText("Crear Base de Datos, funcionalidad de la aplicación, Selects, Inserts, Updates y Deletes de Mods y Crafteos, añadir imagenes a la Base de Datos, crear los Sppiners...");
 
             skin.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.skin1, null));
         }
         else if (credits.equals("Pep Jesús")){
             nombre.setText("Pep Jesús Maroto");
+            titulo.setText("Funciones: ");
             edad.setText("20 años");
             funciones.setText("Crear y organizar los Layouts, cambiar icono de la aplicación, quitar su título, añadir pantalla de carga, utilizar Shared Preferences, crear actividad con Fragment...");
 
