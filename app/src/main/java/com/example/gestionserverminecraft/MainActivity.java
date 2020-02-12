@@ -121,9 +121,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prefsEditor.putInt("Background", a);
         prefsEditor.commit();
     }
-    public void PlayBackgroundSound(View view) {
-        Intent intent = new Intent(MainActivity.this, BackgroundSoundService.class);
-        startService(intent);
-    }
-
 }
