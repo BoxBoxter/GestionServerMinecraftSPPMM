@@ -101,7 +101,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i = new Intent(this, Delete_Crafteos.class);
             startActivity(i, null);
         } else if (v == cambiarFondo) {
-            a = (int) (Math.random() * 5);
+            //a = (int) (Math.random() * 5);
+            a++;
+            if (a == 5) a = 0;
             cl.setBackground(background.get(a));
         } else if (v == creditos) {
             i = new Intent(this, Creditos.class);
